@@ -16,16 +16,13 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'mars-rover-kata'`, () => {
+  it('should create the grid', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('mars-rover-kata');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('mars-rover-kata app is running!');
-  });
+    app.createGrid(5, 5);
+    const xLength = app.grid.length;
+    expect(xLength).toEqual(6);
+    const yLength = app.grid[0].length;
+    expect(yLength).toEqual(6);
+  })
 });
